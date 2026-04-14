@@ -12,6 +12,7 @@ app.use(cors({
 connectDB()
 app.use("/api/v1", userRouter)
 
-app.listen(process.env.PORT || 3006, () => {
-    console.log("Oka ulandiyuuuu");
+const PORT = process.env.PORT || 3006
+app.listen(PORT, "0.0.0.0", () => {
+    console.log(`Oka ${PORT} ulandiyuuuu`);
 })

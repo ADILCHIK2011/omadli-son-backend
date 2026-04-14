@@ -6,7 +6,7 @@ const userRouter = require("./routers/user.router.js")
 const app = express()
 app.use(express.json())
 app.use(cors({
-    origin: "https://omadli-son-frontend.vercel.app"
+    origin: "*"
 }))
 
 connectDB()

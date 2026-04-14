@@ -4,13 +4,17 @@ require("dotenv").config()
 const connectDB = require("./config/database.js")
 const userRouter = require("./routers/user.router.js")
 const app = express()
-app.use(express.json())
+const corsOptions = {
+    origin: "*",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true
+};
+
+app.use(cors(corsOptions));
+app.options("*", cors(corsOptions));
+
+app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors({
-    origin: '*',
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization']
-}));
 
 connectDB()
 app.use("/api/v1", userRouter)

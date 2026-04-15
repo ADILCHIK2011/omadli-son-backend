@@ -5,12 +5,7 @@ const connectDB = require("./config/database.js")
 const userRouter = require("./routers/user.router.js")
 const app = express()
 app.use(express.json())
-app.use(express.urlencoded({ extended: true }));
-app.use(cors({
-    origin: '*',
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization']
-}));
+app.use(cors());
 
 connectDB()
 app.use("/api/v1", userRouter)

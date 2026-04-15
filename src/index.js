@@ -8,7 +8,7 @@ const userRouter = require("./routers/user.router.js")
 const app = express()
 
 app.use(cors({
-    origin: ['https://omadli-son-frontend.vercel.app', 'http://localhost:3000'],
+    origin: ['https://omadli-son-frontend.vercel.app', 'http://localhost:3000' ,"http://localhost:5500" ],
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true

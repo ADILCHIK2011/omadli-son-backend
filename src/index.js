@@ -7,7 +7,11 @@ const userRouter = require("./routers/user.router.js")
 
 const app = express()
 
-app.use(cors());
+const CORS_LINK = process.env.CORS || "https://omadli-son-frontend.vercel.app/"
+app.use(cors({
+    origin: CORS_LINK
+}
+));
 
 
 app.use(express.json())

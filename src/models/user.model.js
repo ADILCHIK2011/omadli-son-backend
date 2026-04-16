@@ -20,6 +20,10 @@ const userSchema = new mongoose.Schema({
         required: true,
         unique: true,
         maxLength: 13
+    },
+    balance: {
+        type: Number,
+        default: 0
     }
 })
 

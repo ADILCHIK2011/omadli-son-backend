@@ -81,4 +81,32 @@ router.post("/login", async (req, res) => {
 })
 
 
+router.post("/add-money", async (req, res) => {
+  const { userId, amount } = req.body
+
+  if (!userId || !amount) {
+      return res.status(400).json({ message: "userId va amount kiritilishi shart!" })
+  }
+
+  if (amount <= 0) {
+      return res.status(400).json({ message: "Pul 0 dan katta bo'lishi kerak!" })
+  }
+
+      const user = await User.findByIdAndUpdate(
+          userId,
+          { $inc: { balance: amount } }, 
+          { new: true }                 
+      )
+
+      if (!user) {
+          return res.status(404).json({ message: "Foydalanuvchi topilmadi!" })
+      }
+
+      res.status(200).json({
+          message: "Muvaffaqiyatli tushirildi!",
+          balance: user.balance
+      })
+})
+
+
 module.exports = router

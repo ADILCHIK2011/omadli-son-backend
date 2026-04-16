@@ -7,7 +7,7 @@ const userRouter = require("./routers/user.router.js");
 
 const app = express();
 
-const CORS_LINK = process.env.CORS || "https://omadli-son-frontend.vercel.app";
+const CORS_LINK = process.env.CORS || "https://omadli-son-frontend.vercel.app" || "http://127.0.0.1:5500";
 app.use(cors({
     origin: CORS_LINK.replace(/\/$/, ""),
     credentials: true
